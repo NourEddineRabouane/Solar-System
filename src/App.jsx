@@ -5,7 +5,7 @@ import Three from "./three";
 function App() {
   return (
     <>
-      <Canvas>
+      <Canvas className="!h-screen">
         <Suspense fallback={null}>
           <Three />
         </Suspense>
