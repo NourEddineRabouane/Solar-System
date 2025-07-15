@@ -2,6 +2,7 @@ import {
   Environment,
   OrbitControls,
   PerspectiveCamera,
+  Text,
 } from "@react-three/drei";
 import Planet from "./Planet";
 import { angleToRadians } from "../utilities/functions";
@@ -13,10 +14,10 @@ const SUN_MASS = 20;
 export default function Three() {
   return (
     <>
-      <PerspectiveCamera makeDefault position={[0, 1, 45]} />
+      <PerspectiveCamera makeDefault position={[0, 1, 55]} />
       <OrbitControls
-        minPolarAngle={angleToRadians(60)}
-        maxPolarAngle={angleToRadians(80)}
+        minPolarAngle={angleToRadians(10)}
+        maxPolarAngle={angleToRadians(90)}
       />
 
       {/* The Sun */}
@@ -24,6 +25,9 @@ export default function Three() {
         <sphereGeometry args={[10, 40, 40]} />
         <meshBasicMaterial color="#FFD700" />
       </mesh>
+      <Text position={[0 , 11 , 0]} color={"#FFD700"} fontSize={2}>
+        {"Sun"}
+      </Text>
 
       {/* The planets */}
       {planets.map((planet) => {
@@ -39,14 +43,6 @@ export default function Three() {
           />
         );
       })}
-
-      <directionalLight
-        position={[50, 50, 50]} // adjust as needed
-        intensity={2}
-        castShadow
-        shadow-mapSize-width={2048}
-        shadow-mapSize-height={2048}
-      />
 
       {/* Enviroment */}
       <Environment background>
